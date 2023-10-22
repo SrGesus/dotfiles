@@ -7,12 +7,15 @@
   imports = [
     ./vscode.nix
     ./git.nix
+    ./librewolf.nix
+    ./cli-tools.nix
+    ./games.nix
   ];
-  
+
   home.packages = with pkgs; [
     vim
     discord
-    librewolf
     neofetch
+    guake
   ];  
 }

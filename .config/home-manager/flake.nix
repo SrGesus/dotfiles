@@ -12,15 +12,14 @@
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
     homeConfigurations = {
-            
-            "user" = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs { 
-                  system = "x86_64-linux"; 
-                  config = { allowUnfree = true; };
-                };
-
-                modules = [ ./home.nix ];
-            };
+      "user" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { 
+          system = "x86_64-linux"; 
+          config = { allowUnfree = true; };
         };
+
+        modules = [ ./home.nix ];
+      };
+    };
   };
 }
