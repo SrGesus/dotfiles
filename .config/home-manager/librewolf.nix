@@ -9,7 +9,9 @@
     settings = {
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.sessions" = false;
-
     };
+    # extensions = [
+    # doesn't work :(
+    # ];
   };
 }

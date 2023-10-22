@@ -4,7 +4,7 @@
     pkgs.gtk
   ];
 
-  programs.gtk = {
+  gtk = {
     enable = true;
 
     font.name = "Iosevka Nerd font 14";

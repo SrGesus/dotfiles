@@ -8,5 +8,8 @@
     enable = true;
     userName = "SrGesus";
     userEmail = "108523575+SrGesus@users.noreply.github.com";
+    extraConfig = {
+      safe.directory = "*";
+    };
   };
 }
