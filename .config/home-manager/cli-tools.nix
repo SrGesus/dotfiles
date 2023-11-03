@@ -6,6 +6,8 @@
     ripgrep
     eza
     zsh-powerlevel10k
+    gnumake
+    btop
   ];
 
   programs.zsh = {

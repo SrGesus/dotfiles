@@ -10,6 +10,8 @@
     ./librewolf.nix
     ./cli-tools.nix
     ./games.nix
+    ./gtk.nix
+    ./documents.nix
   ];
 
   home.packages = with pkgs; [
@@ -17,5 +19,6 @@
     discord
     neofetch
     guake
-  ];  
+    gparted
+  ];
 }

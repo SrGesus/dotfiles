@@ -1,7 +1,13 @@
 {config, pkgs, ...}:
 {
-  home.packages = [
-    pkgs.vscode
+  home.packages = with pkgs; [
+    vscode
+
+    python3
+    gcc
+    arduino
+    arduino-cli avrdude
+    platformio
   ];
 
   programs.vscode = {
@@ -13,7 +19,10 @@
     ];
     userSettings = {
       "java.jdt.ls.java.home" = "${pkgs.jdk17}/lib/openjdk";
-      "terminal.integrated.fontFamily" = ["Iosevka Nerd Font"];
+      "terminal.integrated.fontFamily" = "Iosevka Nerd Font";
+      "window.zoomLevel" = 1;
+      # "platformio-ide.useBuiltinPIOCore" = false;
+      # "platformio-ide.customPATH" = "${pkgs.platformio}/bin";
     };
   };
 }
