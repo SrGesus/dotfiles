@@ -7,12 +7,19 @@
 {
   imports = [
     ./hardware.nix
+    nixos-raspberrypi.nixosModules.raspberry-pi-5.base
+    nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
   ];
 
   networking.hostName = "graz";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
   services.openssh.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma5-bigscreen.enable = true;
 
   # Timezone
   time.timeZone = "Europe/Lisbon";
