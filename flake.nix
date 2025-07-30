@@ -19,11 +19,25 @@
     ];
   };
   
-  outputs = { self, nixpkgs, ... }: {
+  outputs = { self, nixpkgs, nixos-raspberrypi, ... }@inputs: {
     nixosConfigurations = {
-      graz = nixpkgs.lib.nixosSystem {
+      graz = nixos-raspberrypi.lib.nixosSystem  {
         system = "aarch64-linux";
-        modules = [ ./hosts/graz/default.nix ];
+specialArgs = inputs;
+                  modules = [
+(
+  {...}: {
+    
+      imports = with nixos-raspberrypi.nixosModules; [
+                  raspberry-pi-5.base
+                  raspberry-pi-5.bluetooth
+                ];
+
+  }
+)
+          
+          ./hosts/graz/default.nix
+          ];
       };
     };
   };

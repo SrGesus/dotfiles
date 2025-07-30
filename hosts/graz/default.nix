@@ -2,13 +2,12 @@
   config,
   lib,
   pkgs,
+  nixos-raspberrypi,
   ...
 }:
 {
   imports = [
     ./hardware.nix
-    nixos-raspberrypi.nixosModules.raspberry-pi-5.base
-    nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
   ];
 
   networking.hostName = "graz";
@@ -19,7 +18,7 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.desktopManager.plasma5-bigscreen.enable = true;
+  #services.desktopManager.plasma6-bigscreen.enable = true;
 
   # Timezone
   time.timeZone = "Europe/Lisbon";
