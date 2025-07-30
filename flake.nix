@@ -2,7 +2,7 @@
   description = "My NixOS Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
     home = {
       inputs.nixpkgs.follows = "nixpkgs";
