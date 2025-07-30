@@ -52,10 +52,9 @@
     helix
     eza
     ripgrep
-    iwd
     man
     fastfetch
-    firefox
+    firefox git
   ];
 
   # user
