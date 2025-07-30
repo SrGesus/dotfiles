@@ -8,7 +8,7 @@
 {
 
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    # (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   boot.initrd.availableKernelModules = [
@@ -19,7 +19,7 @@
   boot.extraModulePackages = [ ];
 
   # I think this sounds right, well it works
-  boot.loader.grub.enable = false;
+  # boot.loader.grub.enable = false;
 
   # Raspberrypi sd card
   fileSystems = {

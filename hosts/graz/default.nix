@@ -55,6 +55,7 @@
     iwd
     man
     fastfetch
+    firefox
   ];
 
   # user
