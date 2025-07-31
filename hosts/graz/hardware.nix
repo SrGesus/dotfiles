@@ -12,7 +12,7 @@
   ];
 
   boot.initrd.availableKernelModules = [
-    # "xhci_pci"
+    "xhci_pci"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
