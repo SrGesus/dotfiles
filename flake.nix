@@ -28,6 +28,7 @@
       self,
       nixpkgs,
       nixos-raspberrypi,
+      lib,
       ...
     }:
     let
