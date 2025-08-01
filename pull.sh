@@ -30,4 +30,4 @@
 
 cd $(dirname "$0") &&
 git pull &&
-nixos-rebuild switch --flake .#$(hostname)
+sudo nixos-rebuild switch --flake .#$(hostname)

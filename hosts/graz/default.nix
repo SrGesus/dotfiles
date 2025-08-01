@@ -34,6 +34,9 @@
 
   modules = {
     git.enable = true;
+    home-manager.pi = {
+      enable = true;
+    };
   };
 
   # Enable CUPS to print documents
