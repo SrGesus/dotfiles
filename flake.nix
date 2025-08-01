@@ -37,7 +37,7 @@
           inputs
           # pkgs
           ;
-        # lib = self;
+        lib = lib;
       });
     in
     {
@@ -45,8 +45,7 @@
         graz = nixos-raspberrypi.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = inputs;
-          modules = [
-            (lib.collect builtins.isPath (myLib.rakeLeaves ./modules))
+          modules = (lib.collect builtins.isPath (myLib.rakeLeaves ./modules)) ++ [
             ./hosts/graz/default.nix
           ];
         };
