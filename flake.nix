@@ -47,7 +47,15 @@
           specialArgs = inputs;
           modules = [
             ./hosts/graz/default.nix
-          ] ++ (lib.collect builtins.isPath (myLib.rakeLeaves ./modules));
+            inputs.home.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+              };
+            }
+          ]
+          ++ (lib.collect builtins.isPath (myLib.rakeLeaves ./modules));
         };
       };
     };
