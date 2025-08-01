@@ -33,7 +33,6 @@
   services.xserver.enable = true;
 
   modules = {
-    hardware.raspberrypi5 = true;
     git.enable = true;
   };
 

@@ -1,6 +1,6 @@
 {
   lib,
-  pkgs,
+  config,
   ...
 }:
 let
@@ -14,14 +14,8 @@ in
     type = lib.types.str;
   };
 
-  config =
-    if cfg == "automatic" then
-      {
-        time.timeZone = null; # Not managed by Nix
-        services.automatic-timezoned.enable = true;
-      }
-    else
-      {
-        time.timeZone = cfg;
-      };
+    config = {
+      services.automatic-timezoned.enable = lib.mkIf (cfg == "automatic") true;
+      time.timeZone = lib.mkIf (cfg != "automatic") cfg;
+    };
 }

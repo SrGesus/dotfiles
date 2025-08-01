@@ -10,7 +10,7 @@ in
       example = true;
       description = "Whether to enable eza.";
       type = lib.types.bool;
-    }
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -31,9 +31,9 @@ in
       enableCompletion = true;
     };
 
-    programs.eza = {
-      enable = true;
-      enableZshIntegration = true;
-    }
+    # programs.eza = lib.mkIf cfg.enableEza {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
   };
 }

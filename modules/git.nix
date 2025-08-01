@@ -11,20 +11,20 @@ in {
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "SrGesus";
-      userEmail = "108523575+SrGesus@users.noreply.github.com";
-      extraConfig = {
-        safe.directory = lib.mkIf cfg.safeDirs "*";
-      };
-      delta = lib.mkIf cfg.delta.enable {
-        enable = true;
-        options = {
-          features = "decorations";
-          line-numbers = true;
-          # Workaround for https://github.com/dandavison/delta/issues/1663
-          # dark = true;
-        };
-      };
+      # userName = "SrGesus";
+      # userEmail = "108523575+SrGesus@users.noreply.github.com";
+      # extraConfig = {
+        # safe.directory = lib.mkIf cfg.safeDirs "*";
+      # };
+      # delta = lib.mkIf cfg.delta.enable {
+      #   enable = true;
+      #   options = {
+      #     features = "decorations";
+      #     line-numbers = true;
+      #     # Workaround for https://github.com/dandavison/delta/issues/1663
+      #     # dark = true;
+      #   };
+      # };
     };
   };
 }

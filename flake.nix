@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     # nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
     nixos-raspberrypi = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nvmd/nixos-raspberrypi/main";
     };
     home = {
@@ -45,9 +45,9 @@
         graz = nixos-raspberrypi.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = inputs;
-          modules = (lib.collect builtins.isPath (myLib.rakeLeaves ./modules)) ++ [
+          modules = [
             ./hosts/graz/default.nix
-          ];
+          ] ++ (lib.collect builtins.isPath (myLib.rakeLeaves ./modules));
         };
       };
     };

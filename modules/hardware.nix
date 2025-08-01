@@ -26,7 +26,7 @@ in
   }
   // {
     # Keyboard
-    "pt" = {
+    # "pt" = {
       services.xserver.xkb = {
         layout = "pt";
         options = "eurosign:e,caps:escape";
@@ -37,6 +37,6 @@ in
         useXkbConfig = true; # use xkb.options in tty.
       };
     };
-  }
-  ."${cfg.keyboard}";
+  # }
+  # ."${cfg.keyboard}";
 }
