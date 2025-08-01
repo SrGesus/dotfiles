@@ -17,9 +17,13 @@
 
   services.tailscale.enable = true;
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager = {
+    autoLogin.user = "pi";
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
+
   #services.desktopManager.plasma6-bigscreen.enable = true;
 
   # Timezone
@@ -56,7 +60,8 @@
     ripgrep
     man
     fastfetch
-    firefox git
+    firefox
+    git
   ];
 
   # user
