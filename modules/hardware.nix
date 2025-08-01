@@ -4,20 +4,34 @@ let
 in
 {
   options.modules.hardware = {
-    raspberrypi5 = lib.mkEnableOption "Raspberry pi 5 hardware modules";
+    raspberrypi5 = lib.mkEnableOption "Raspberry Pi 5 hardware modules";
+    keyboard = lib.mkOption {
+      default = "pt";
+      example = true;
+      description = "Keyboard type.";
+      type = lib.types.str;
+    };
   };
 
   config = {
-    imports =
-      if cfg.raspberrypi5 then
+    imports = (
+      myLib.mkIfList cfg.raspberrypi5 (
         with nixos-raspberrypi.nixosModules;
         [
           raspberry-pi-5.base
           raspberry-pi-5.bluetooth
         ]
-      else
-        [
-
-        ];
-  };
+      )
+    );
+  }
+  // {
+    # Keyboard
+    "pt" = {
+      services.xserver.xkb = {
+        layout = "pt";
+        options = "eurosign:e,caps:escape";
+      };
+    };
+  }
+  ."${cfg.keyboard}";
 }

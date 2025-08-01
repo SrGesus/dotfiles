@@ -23,13 +23,11 @@
     sddm.wayland.enable = true;
   };
   services.desktopManager.plasma6.enable = true;
-
   #services.desktopManager.plasma6-bigscreen.enable = true;
 
   # Timezone
   time.timeZone = "Europe/Lisbon";
-
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_IE.UTF-8";
   console = {
     # font = "Lat2-Terminus16";
 
@@ -42,7 +40,7 @@
   services.xserver = {
     enable = true;
     xkb.layout = "pt";
-    # xkb.options = "eurosign:e,caps:escape";
+    xkb.options = "eurosign:e,caps:escape";
   };
 
   # Enable CUPS to print documents
