@@ -28,16 +28,16 @@
       self,
       nixpkgs,
       nixos-raspberrypi,
-      lib,
       ...
     }:
     let
+      lib = inputs.nixpkgs.lib;
       myLib = import ./lib ({
         inherit
           inputs
           # pkgs
           ;
-        lib = self;
+        # lib = self;
       });
     in
     {
