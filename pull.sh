@@ -28,6 +28,6 @@
 #   fi
 # fi
 
-cd $(dirname "$0")
-git pull
+cd $(dirname "$0") &&
+git pull &&
 nixos-rebuild switch --flake .#$(hostname)
