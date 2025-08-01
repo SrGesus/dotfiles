@@ -3,8 +3,8 @@
 in {
 
   options.modules.git = {
-    enable = lib.mkEnableOption "git";
-    safeDirs.enable = lib.mkEnableOption "marking all directories as safe in git";
+    enable = lib.mkEnableOption "git module";
+    safeDirs = lib.mkEnableOption "marking all directories as safe in git";
     delta.enable = lib.mkEnableOption "git delta";
   };
 
@@ -14,7 +14,7 @@ in {
       userName = "SrGesus";
       userEmail = "108523575+SrGesus@users.noreply.github.com";
       extraConfig = {
-        safe.directory = lib.mkIf cfg.safeDirs.enable "*";
+        safe.directory = lib.mkIf cfg.safeDirs "*";
       };
       delta = lib.mkIf cfg.delta.enable {
         enable = true;

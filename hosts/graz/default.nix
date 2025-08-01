@@ -8,6 +8,8 @@
 {
   imports = [
     ./hardware.nix
+    nixos-raspberrypi.nixosModules.raspberry-pi-5.base
+    nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
   ];
 
   networking.hostName = "graz";
@@ -25,22 +27,14 @@
   services.desktopManager.plasma6.enable = true;
   #services.desktopManager.plasma6-bigscreen.enable = true;
 
-  # Timezone
-  time.timeZone = "Europe/Lisbon";
+  # Locale
   i18n.defaultLocale = "en_IE.UTF-8";
-  console = {
-    # font = "Lat2-Terminus16";
 
-    # Pt Keyboard
-    keyMap = lib.mkForce "pt-latin9";
-    #keyMap = "pt";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+  services.xserver.enable = true;
 
-  services.xserver = {
-    enable = true;
-    xkb.layout = "pt";
-    xkb.options = "eurosign:e,caps:escape";
+  modules = {
+    hardware.raspberrypi5 = true;
+    git.enable = true;
   };
 
   # Enable CUPS to print documents
@@ -59,7 +53,6 @@
     man
     fastfetch
     firefox
-    git
   ];
 
   # user
@@ -71,7 +64,9 @@
       "networkmanager"
     ];
   };
+
   security.sudo.wheelNeedsPassword = false;
+
   nix.settings.trusted-users = [
     "root"
     "pi"
