@@ -46,7 +46,7 @@
           system = "aarch64-linux";
           specialArgs = inputs;
           modules = [
-            (lib.collect builtins.isPath (rakeLeaves ./modules))
+            (lib.collect builtins.isPath (myLib.rakeLeaves ./modules))
             ./hosts/graz/default.nix
           ];
         };
