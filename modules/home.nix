@@ -11,7 +11,14 @@ in
   config.home-manager.users = lib.mapAttrs (
     user: value:
     lib.mkIf value.enable {
-      home.username = user;
+      home = {
+        
+        username = user;
+        stateVersion = config.system.stateVersion;
+      };
+
+      programs.home-manager.enable = true;
+      
     }
   ) cfg;
 

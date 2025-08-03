@@ -33,8 +33,8 @@
   services.xserver.enable = true;
 
   modules = {
-    git.enable = true;
     home-manager.pi = {
+      git.enable = true;
       enable = true;
     };
   };
