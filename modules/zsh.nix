@@ -49,6 +49,10 @@
         };
       };
 
+      programs.fzf = {
+        enable = true;
+      };
+
       programs.eza = lib.mkIf value.zsh.enableEza {
         enable = true;
         enableZshIntegration = true;
