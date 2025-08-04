@@ -15,28 +15,35 @@
   config.home-manager.users = lib.mapAttrs (
     user: value:
     lib.mkIf value.zsh.enable {
-    programs.zsh = {
-      enable = true;
-
-      oh-my-zsh = {
+      programs.zsh = {
         enable = true;
-        plugins = [
-          "git"
-          # "docker-compose"
-          "fzf"
-        ];
+
+        oh-my-zsh = {
+          enable = true;
+          plugins = [
+            "git"
+            # "docker-compose"
+            "fzf"
+          ];
+        };
+
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        enableCompletion = true;
+
+        shellAliases = {
+          cat = "bat";
+          eza = lib.mkIf value.zsh.enableEza "eza --icons";
+          ls = lib.mkIf value.zsh.enableEza "eza";
+          tree = lib.mkIf value.zsh.enableEza "eza -T";
+        };
       };
 
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      enableCompletion = true;
-    };
+      programs.eza = lib.mkIf value.zsh.enableEza {
+        enable = true;
+        enableZshIntegration = true;
+      };
 
-    programs.eza = lib.mkIf value.zsh.enableEza {
-      enable = true;
-      enableZshIntegration = true;
-    };
-      
     }
   ) config.modules.home-manager;
 
