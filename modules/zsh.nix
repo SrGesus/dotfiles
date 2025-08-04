@@ -34,6 +34,7 @@
             "git"
             # "docker-compose"
             "fzf"
+            "zoxide"
           ];
         };
 
@@ -50,6 +51,11 @@
       };
 
       programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
+      programs.zoxide = {
         enable = true;
         enableZshIntegration = true;
       };
