@@ -48,10 +48,11 @@
         '';
 
         shellAliases = {
-          cat = "batcat";
-          eza = lib.mkIf value.zsh.enableEza "eza --icons";
-          ls = lib.mkIf value.zsh.enableEza "eza";
+          cat = "bat";
+          eza = lib.mkIf value.zsh.enableEza "eza --icons=auto";
+          ls  = lib.mkIf value.zsh.enableEza "eza";
           tree = lib.mkIf value.zsh.enableEza "eza -T";
+          d   = "ls -alF";
         };
       };
 
@@ -59,7 +60,10 @@
 
       programs.bat.enable = true;
 
-
+      home.packages = with pkgs; [
+        wl-clipboard
+        htop
+      ];
 
       programs.fzf = {
         enable = true;

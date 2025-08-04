@@ -1,5 +1,5 @@
 
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.modules.home-manager;
 in
@@ -19,5 +19,5 @@ in
         nerd-fonts.droid-sans-mono
       ];
     }
-  ) cfg
+  ) cfg;
 }
