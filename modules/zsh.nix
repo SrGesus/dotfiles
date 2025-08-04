@@ -51,6 +51,7 @@
 
       programs.fzf = {
         enable = true;
+        enableZshIntegration = true;
       };
 
       programs.eza = lib.mkIf value.zsh.enableEza {
