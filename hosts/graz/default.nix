@@ -62,10 +62,8 @@
 
   environment.systemPackages = with pkgs; [
     helix
-    eza
     ripgrep
     man
-    fastfetch
     firefox
   ];
 

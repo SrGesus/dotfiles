@@ -40,7 +40,13 @@
 
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
+        historySubstringSearch.enable = true;
         enableCompletion = true;
+
+        initContent = ''
+          [[ $- == *i* ]] && echo 'Interactive' || echo 'Not interactive'
+          [[ $- == *i* ]] && fastfetch
+        '';
 
         shellAliases = {
           cat = "bat";
@@ -49,6 +55,8 @@
           tree = lib.mkIf value.zsh.enableEza "eza -T";
         };
       };
+
+      programs.fastfetch.enable = true;
 
       programs.fzf = {
         enable = true;
