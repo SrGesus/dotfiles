@@ -32,6 +32,17 @@
 
   services.xserver.enable = true;
 
+  # user
+  users.users.pi = {
+    initialPassword = "banana";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+  };
+
   modules = {
     home-manager.pi = {
       git.enable = true;
@@ -57,16 +68,6 @@
     fastfetch
     firefox
   ];
-
-  # user
-  users.users.pi = {
-    initialPassword = "banana";
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-  };
 
   security.sudo.wheelNeedsPassword = false;
 
