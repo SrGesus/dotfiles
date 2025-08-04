@@ -35,6 +35,7 @@
   modules = {
     home-manager.pi = {
       git.enable = true;
+      zsh.enable = true;
       enable = true;
     };
   };
