@@ -24,6 +24,7 @@
     sddm.enable = true;
     sddm.wayland.enable = true;
   };
+
   services.desktopManager.plasma6.enable = true;
   #services.desktopManager.plasma6-bigscreen.enable = true;
 
@@ -45,9 +46,10 @@
 
   modules = {
     home-manager.pi = {
+      enable = true;
       git.enable = true;
       zsh.enable = true;
-      enable = true;
+      nerdFonts.enable = true;
     };
   };
 

@@ -44,12 +44,11 @@
         enableCompletion = true;
 
         initContent = ''
-          [[ $- == *i* ]] && echo 'Interactive' || echo 'Not interactive'
           [[ $- == *i* ]] && fastfetch
         '';
 
         shellAliases = {
-          cat = "bat";
+          cat = "batcat";
           eza = lib.mkIf value.zsh.enableEza "eza --icons";
           ls = lib.mkIf value.zsh.enableEza "eza";
           tree = lib.mkIf value.zsh.enableEza "eza -T";
@@ -57,6 +56,10 @@
       };
 
       programs.fastfetch.enable = true;
+
+      programs.bat.enable = true;
+
+
 
       programs.fzf = {
         enable = true;
@@ -75,28 +78,4 @@
 
     }
   ) cfg;
-
-  # config = lib.mkIf cfg.enable {
-  #   programs.zsh = {
-  #     enable = true;
-
-  #     oh-my-zsh = {
-  #       enable = true;
-  #       plugins = [
-  #         "git"
-  #         # "docker-compose"
-  #         "fzf"
-  #       ];
-  #     };
-
-  #     autosuggestions.enable = true;
-  #     syntaxHighlighting.enable = true;
-  #     enableCompletion = true;
-  #   };
-
-  #   # programs.eza = lib.mkIf cfg.enableEza {
-  #   #   enable = true;
-  #   #   enableZshIntegration = true;
-  #   # };
-  # };
 }
