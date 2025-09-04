@@ -41,6 +41,7 @@
       helix.enable = true;
       discord.enable = true;
       photography.enable = true;
+      obsidian.enable = true;
     };
     services.kdeconnect.enable = true;
     home.stateVersion = "25.05";
