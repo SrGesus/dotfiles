@@ -44,7 +44,7 @@ in {
       enableCompletion = true;
 
       initContent = ''
-        [[ $SHLVL -eq 1 ]] && [[ $- == *i* ]] && ${config.programs.fastfetch.package}
+        [[ $SHLVL -eq 1 ]] && [[ $- == *i* ]] && ${config.programs.fastfetch.package}/bin/fastfetch
 
         NEWLINE=$'\n'
         PROMPT="''${NEWLINE}%{$(tput setaf 15 bold)%}%D{%a %d %b %Y %T} %{$(tput setaf 2)%}%M%{$(tput sgr0)%} [%!]\$(local retval=\$?; [[ \$retval -ne 0 ]] && echo \" Exited with \$retval.\")''${NEWLINE}%{$(tput setaf 2 bold)%}%n@%m %{$(tput setaf 4)%}%~%{$(tput sgr0)%} %#$([[ $SHLVL -ne 1 ]] && echo "$SHLVL")> "
