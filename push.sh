@@ -9,7 +9,7 @@ echo "== Building NixOS..." &&
 sudo nixos-rebuild switch --flake .#$(hostname) &&
 
 echo "== Committing to git..." &&
-git commit -m "NixOS $(date -u --iso-8601=seconds) $(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | tail -1 | awk '{print $1}') $(hostname) Build" &&
+git commit -m "NixOS $(date -u --iso-8601=seconds) $(readlink /nix/var/nix/profiles/system | cut -d- -f2) $(hostname) Build" &&
 
 echo "== Pushing to remote..." &&
 git push
