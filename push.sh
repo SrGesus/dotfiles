@@ -12,10 +12,10 @@ echo "== Committing to git..." &&
 
 DEFAULT_COMMIT_MSG="NixOS $(date -u --iso-8601=seconds) $(readlink /nix/var/nix/profiles/system | cut -d- -f2) $(hostname) Build"
 read -p "Commit message: " PROMPT_COMMIT_MSG
-echo $PROMPT_COMMIT_MSG
-COMMIT_MSG=$([[ -z "${var// /}" ]] && echo $DEFAULT_COMMIT_MSG || echo $PROMPT_COMMIT_MSG)
-echo Commit: $COMMIT_MSG
+echo Prompt: $PROMPT_COMMIT_MSG
+COMMIT_MSG=$([[ -z "${PROMPT_COMMIT_MSG// /}" ]] && echo $DEFAULT_COMMIT_MSG || echo $PROMPT_COMMIT_MSG)
 
+echo Commit: $COMMIT_MSG
 git commit -m "$COMMIT_MSG" &&
 
 echo "== Pushing to remote..." &&
