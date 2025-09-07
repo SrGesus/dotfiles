@@ -64,7 +64,6 @@ in
       '';
 
       shellAliases = {
-        cd = "z";
         cat = "bat";
         eza = lib.mkIf cfg.enableEza "eza --icons";
         ls = lib.mkIf cfg.enableEza "eza";
@@ -87,6 +86,9 @@ in
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
     };
 
     programs.eza = lib.mkIf cfg.enableEza {
