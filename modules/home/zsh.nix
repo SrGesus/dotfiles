@@ -64,7 +64,7 @@ in
       '';
 
       shellAliases = {
-        cd = "zoxide";
+        cd = "z";
         cat = "bat";
         eza = lib.mkIf cfg.enableEza "eza --icons";
         ls = lib.mkIf cfg.enableEza "eza";
