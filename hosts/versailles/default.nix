@@ -71,6 +71,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.autoLogin.user = "user";
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
