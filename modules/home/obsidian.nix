@@ -9,9 +9,11 @@ in {
 
   config.programs.obsidian = mkIf cfg.enable {
     enable = true;
-    vaults.default = {
-      enable = true;
-      target = "${config.home.homeDirectory}/Documents/vault/default";
+    vaults."Documents/Obsidian Vault".enable = true;
+    defaultSettings = {
+      app = {
+        
+      };
     };
   };
 }
