@@ -2,5 +2,8 @@
 let
 in
 {
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 }
