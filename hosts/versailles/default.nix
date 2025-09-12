@@ -32,6 +32,8 @@
     steam.enable = true;
   };
 
+  programs.kdeconnect.enable = true;
+
   home-manager.users.user = {
     modules = {
       git.enable = true;
@@ -43,7 +45,6 @@
       photography.enable = true;
       obsidian.enable = true;
     };
-    services.kdeconnect.enable = true;
     home.stateVersion = "25.05";
   };
 
