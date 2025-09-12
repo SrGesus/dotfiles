@@ -5,7 +5,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -32,8 +33,6 @@
     steam.enable = true;
   };
 
-  programs.kdeconnect.enable = true;
-
   home-manager.users.user = {
     modules = {
       git.enable = true;
@@ -45,6 +44,7 @@
       photography.enable = true;
       obsidian.enable = true;
     };
+    services.kdeconnect.enable = true;
     home.stateVersion = "25.05";
   };
 
@@ -110,7 +110,11 @@
   users.users.user = {
     isNormalUser = true;
     description = "User";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
   };
 
   # Install firefox.
@@ -120,9 +124,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     unrar
-    kdePackages.kdeconnect-kde
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
