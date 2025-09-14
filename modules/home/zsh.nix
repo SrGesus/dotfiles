@@ -95,5 +95,10 @@ in
       enable = true;
       enableZshIntegration = true;
     };
+
+    programs.zellij = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
