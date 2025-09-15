@@ -57,6 +57,8 @@ in
       enableCompletion = true;
 
       initContent = ''
+        bindkey '^H' backward-kill-word
+
         [[ $SHLVL -eq 1 ]] && [[ $- == *i* ]] && ${config.programs.fastfetch.package}/bin/fastfetch
 
         NEWLINE=$'\n'
@@ -96,9 +98,13 @@ in
       enableZshIntegration = true;
     };
 
-    programs.zellij = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    # programs.zellij = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
+
+    home.packages = with pkgs; [
+      kdePackages.yakuake
+    ];
   };
 }
