@@ -106,7 +106,9 @@ in
     };
 
     home.file = {
-      # ".config/zellij/config.kdl".source = "~/dotfiles/.config/zellij/config.kdl";
+      "${config.xdg.configHome}/zellij/config.kdl" = {
+        source = ../../.config/zellij/config.kdl;
+      };
     };
 
     home.packages = with pkgs; [
