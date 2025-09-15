@@ -103,15 +103,6 @@ in
       enableZshIntegration = true;
       attachExistingSession = true;
       exitShellOnExit = true;
-      settings = {
-        keybinds._children = [
-          {
-            unbind = {
-              _args = [ "Ctrl h" ];
-            };
-          }
-        ];
-      };
     };
 
     home.packages = with pkgs; [
