@@ -105,6 +105,8 @@ in
       exitShellOnExit = true;
     };
 
+    # home.file = ".config/zellij/config.kdl"
+
     home.packages = with pkgs; [
       kdePackages.yakuake
     ];
