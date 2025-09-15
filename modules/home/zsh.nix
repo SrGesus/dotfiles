@@ -101,6 +101,14 @@ in
     programs.zellij = {
       enable = true;
       enableZshIntegration = true;
+      attachExistingSession = true;
+      exitShellOnExit = true;
+      # settings = {
+      #   # default_mode = "locked";
+      #   keybinds = {
+      #     unbind = [ "Ctrl h" ];
+      #   };
+      # };
     };
 
     home.packages = with pkgs; [
