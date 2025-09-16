@@ -58,11 +58,18 @@ in
 
       initContent = ''
         bindkey '^H' backward-kill-word
+        
+        function git_branch(){                                                                                                                 
+            ref=$(git symbolic-ref --short --quiet HEAD 2>/dev/null)        
+            if [ -n "''${ref}" ]; then                                                    
+                echo "(""$ref"")"                                                       
+            fi                                                                          
+        }
 
         [[ $SHLVL -eq 1 ]] && [[ $- == *i* ]] && ${config.programs.fastfetch.package}/bin/fastfetch
 
         NEWLINE=$'\n'
-        PROMPT="''${NEWLINE}%{$(tput setaf 15 bold)%}%D{%a %d %b %Y %T} %{$(tput setaf 2)%}%M%{$(tput sgr0)%} [%!]\$(local retval=\$?; [[ \$retval -ne 0 ]] && echo \" Exited with \$retval.\")''${NEWLINE}%{$(tput setaf 2 bold)%}%n@%m %{$(tput setaf 4)%}%~%{$(tput sgr0)%} %#$([[ $SHLVL -ne 1 ]] && echo "$SHLVL")> "
+        PROMPT="''${NEWLINE}%{$(tput setaf 15 bold)%}%D{%a %d %b %Y %T} %{$(tput setaf 2)%}%M%{$(tput sgr0)%} [%!]\%{\%F{green}\%}$(git_branch)\%{\%F{none}\%}\$(local retval=\$?; [[ \$retval -ne 0 ]] && echo \" Exited with \$retval.\")''${NEWLINE}%{$(tput setaf 2 bold)%}%n@%m %{$(tput setaf 4)%}%~%{$(tput sgr0)%} %#$([[ $SHLVL -ne 1 ]] && echo "$SHLVL")> "
       '';
 
       shellAliases = {
