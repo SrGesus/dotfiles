@@ -59,11 +59,11 @@ in
       initContent = ''
         bindkey '^H' backward-kill-word
         
-        function git_branch(){                                                                                                                 
-            ref=$(git symbolic-ref --short --quiet HEAD 2>/dev/null)        
-            if [ -n "''${ref}" ]; then                                                    
-                echo " (""$ref"")"                                                       
-            fi                                                                          
+        function git_branch(){
+            ref=$(git symbolic-ref --short --quiet HEAD 2>/dev/null)
+            if [ -n "''${ref}" ]; then
+                echo " (""$ref"")"
+            fi
         }
 
         [ ''${ZSH_VERSION} ] && precmd() { export retval=$?; }
