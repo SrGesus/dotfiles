@@ -5,7 +5,8 @@
   ...
 }:
 {
-  home.packages = [
-    pkgs.qalculate-qt
+  home.packages = with pkgs; [
+    qalculate-qt
+    wl-clipboard-rs
   ];
 }
