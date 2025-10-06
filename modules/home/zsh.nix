@@ -76,7 +76,7 @@ in
 
       shellAliases = {
         cat = "bat";
-        eza = lib.mkIf cfg.enableEza "eza --icons";
+        eza = lib.mkIf cfg.enableEza "eza --icons=auto";
         ls = lib.mkIf cfg.enableEza "eza";
         d = lib.mkIf cfg.enableEza "eza -alF";
         tree = lib.mkIf cfg.enableEza "eza -T";
