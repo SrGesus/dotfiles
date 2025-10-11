@@ -9,5 +9,6 @@ in {
 
   config.programs.steam = mkIf cfg.enable {
     enable = true;
+    protontricks.enable = true;
   };
 }
