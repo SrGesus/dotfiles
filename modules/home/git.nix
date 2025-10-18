@@ -22,5 +22,7 @@ in {
           # dark = true;
         };
     };
+
+    lfs.enable = true;
   };
 }

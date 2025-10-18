@@ -12,7 +12,7 @@ in {
     protontricks.enable = true;
   };
 
-  config.environment.systemPackages = [
+  config.fonts.packages = [
     pkgs.freetype
   ];
 }
