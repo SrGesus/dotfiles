@@ -10,6 +10,9 @@ in {
   config.programs.steam = mkIf cfg.enable {
     enable = true;
     protontricks.enable = true;
+    extraCompatPackages = [
+      pkgs.proton-ge-bin
+    ];
   };
 
   config.fonts.packages = [
