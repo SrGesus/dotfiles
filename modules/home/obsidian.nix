@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.modules.obsidian;
@@ -8,15 +8,7 @@ in
     enable = mkEnableOption "obsidian";
   };
 
-  config.programs.obsidian = mkIf cfg.enable {
-    enable = true;
-
-    # vaults."Documents/Obsidian Vault".enable = true;
-
-    # defaultSettings = {
-    #   app = {
-
-    #   };
-    # };
-  };
+  config.home.packages = mkIf cfg.enable (with pkgs; [
+    obsidian
+  ]);
 }
