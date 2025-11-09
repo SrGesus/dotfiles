@@ -6,6 +6,8 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
+      libadwaita
+
       # List by default
       zlib
       zstd
