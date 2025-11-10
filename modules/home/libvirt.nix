@@ -7,9 +7,4 @@ in
   options.modules.libvirtd = {
     enable = mkEnableOption "libvirtd";
   };
-
-  config.home.packages = mkIf cfg.enable [
-    pkgs.virt-manager
-    pkgs.virt-viewer
-  ];
 }
