@@ -35,6 +35,7 @@
 
   home-manager.users.user = {
     modules = {
+      adb.enable = true;
       git.enable = true;
       zsh.enable = true;
       vscode.enable = true;
