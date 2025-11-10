@@ -35,6 +35,7 @@
 
   home-manager.users.user = {
     modules = {
+      libvirtd.enable = true;
       adb.enable = true;
       git.enable = true;
       zsh.enable = true;
