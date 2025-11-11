@@ -18,6 +18,10 @@ in
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
+      nss = {
+        enable = true;
+        enableGuest = true;
+      };
       qemu = {
         package = pkgs.qemu_kvm;
         runAsRoot = true;
