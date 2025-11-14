@@ -9,5 +9,6 @@
     qalculate-qt
     wl-clipboard-rs
     qbittorrent
+    rpi-imager
   ];
 }
