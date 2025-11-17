@@ -48,6 +48,9 @@
     };
     services.kdeconnect.enable = true;
     home.stateVersion = "25.05";
+    programs.keepassxc = {
+      enable = true;
+    };
   };
 
   hardware.bluetooth.enable = true;
