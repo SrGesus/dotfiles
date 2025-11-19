@@ -53,6 +53,11 @@
     };
   };
 
+  services.udev.packages = [ 
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
