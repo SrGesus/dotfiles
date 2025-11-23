@@ -18,6 +18,7 @@ in
   config.home.packages = (mkIfList cfg.minecraft [ pkgs.prismlauncher ]) ++ [
     pkgs.wineWow64Packages.full
     pkgs.winetricks
+    pkgs.nexusmods-app
   ];
 
   config.programs.lutris = {
