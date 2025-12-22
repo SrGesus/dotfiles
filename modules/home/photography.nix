@@ -10,6 +10,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = [
       pkgs.art
+      pkgs.gimp
     ];
   };
 }
