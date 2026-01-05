@@ -35,8 +35,12 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  networking.interfaces.eno1 = lib.mkForce {  };
+  # networking.interfaces.eno1 = lib.mkForce {  };
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
+
+  # systemd.services.udev.extraConfig = ''
+  #   SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="xx:xx:xx:xx:xx:xx", NAME="wlan0"
+  # '';
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
