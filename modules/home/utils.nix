@@ -11,5 +11,6 @@
     qbittorrent
     rpi-imager
     beancount
+    fava
   ];
 }
