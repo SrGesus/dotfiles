@@ -10,5 +10,6 @@
     wl-clipboard-rs
     qbittorrent
     rpi-imager
+    _7zz
   ];
 }
