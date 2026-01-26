@@ -46,12 +46,20 @@
   console.keyMap = "pt-latin1";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.user = {
-  #   description = "User";
-  # };
+  users.users.user = {
+    description = "User";
+  };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "myUser" ];
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
