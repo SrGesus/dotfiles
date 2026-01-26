@@ -7,15 +7,23 @@ let
   systemModules = myLib.listModulesRecursive ./modules/system;
   homeModules = myLib.listModulesRecursive ./modules/home;
 
+  profiles = myLib.rakeLeaves ./profiles;
+
   mkHosts =
     dir:
     builtins.mapAttrs (
       host: filetype:
       lib.nixosSystem {
-        specialArgs = inputs;
+        specialArgs = {
+          inherit
+            inputs
+            profiles
+            ;
+        };
         modules = [
           {
             networking.hostName = host;
+            nixpkgs.config.allowUnfree = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -23,10 +31,9 @@ let
               sharedModules = homeModules;
             };
           }
-          (dir + "/${host}")
           inputs.home.nixosModules.home-manager
-
-        ];
+          (dir + "/${host}")
+        ] ++ systemModules;
       }
     ) (builtins.readDir dir);
 

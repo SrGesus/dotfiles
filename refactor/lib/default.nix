@@ -11,7 +11,7 @@ let
   listModulesRecursive' = dir: lib.filter (p: p != dir + "/default.nix") (listModulesRecursive dir);
 in
 {
-  my = {
+  myLib = {
     inherit listFilesWithSuffixRecursive listModulesRecursive listModulesRecursive';
   }
   // lib.foldr (path: acc: acc // (import path args)) { } (listModulesRecursive' ./.);
