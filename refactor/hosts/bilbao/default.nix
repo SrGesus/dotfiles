@@ -8,11 +8,7 @@
 {
   imports = with profiles.system; [
     # Include the results of the hardware scan.
-    firefox
-    graphical
-    locale
-    networking
-    printing
+    laptop
     ./hardware.nix
   ];
 
@@ -26,10 +22,12 @@
 
   home-manager.users.user = {
     imports = with profiles.home; [
+      common
     ];
 
     modules = {
       superuser = true;
+      graphical = true;
       isNormalUser = true;
     };
 
@@ -56,8 +54,8 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-      AllowUsers = [ "myUser" ];
+      # PermitRootLogin = "no";
+      # AllowUsers = [ "user" ];
     };
   };
 

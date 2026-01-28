@@ -1,5 +1,18 @@
-{ pkgs, lib, ... }:
 {
+  profiles,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = with profiles.system; [
+    common
+    firefox
+    printing
+    fonts
+  ];
+
+  # TODO: Move tailscale somewhere else
   services.tailscale = {
     enable = true;
     extraDaemonFlags = [ "--no-logs-no-support" ];

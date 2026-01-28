@@ -6,7 +6,6 @@ in
 {
   options.modules.git = {
     enable = mkEnableOption "git";
-    # delta = mkEnableOption "git delta";
   };
 
   config.programs.git = mkIf cfg.enable {

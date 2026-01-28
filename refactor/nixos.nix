@@ -1,6 +1,11 @@
-inputs@{ ... }:
+inputs@{
+  plasma-manager,
+  home-manager,
+  nixpkgs,
+  ...
+}:
 let
-  inherit (inputs.nixpkgs) lib;
+  inherit (nixpkgs) lib;
   inherit (import ./lib { inherit lib; }) myLib;
   inherit (myLib) listModulesRecursive;
 
@@ -23,17 +28,17 @@ let
         modules = [
           {
             networking.hostName = host;
-            nixpkgs.config.allowUnfree = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit myLib; };
-              sharedModules = homeModules;
+              sharedModules = homeModules ++ [ plasma-manager.homeModules.plasma-manager ];
             };
           }
-          inputs.home.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           (dir + "/${host}")
-        ] ++ systemModules;
+        ]
+        ++ systemModules;
       }
     ) (builtins.readDir dir);
 

@@ -83,8 +83,6 @@ in
       };
     };
 
-    modules.nerdFonts.enable = true;
-
     programs.fastfetch.enable = true;
 
     programs.bat.enable = true;

@@ -83,8 +83,6 @@ in
       };
     };
 
-    modules.nerdFonts.enable = true;
-
     programs.fastfetch.enable = true;
 
     programs.bat.enable = true;
@@ -116,12 +114,11 @@ in
 
     home.file = {
       "${config.xdg.configHome}/zellij/config.kdl" = {
-        source = ../../../.config/zellij/config.kdl;
+        source = ../../.config/zellij/config.kdl;
       };
     };
 
     home.packages = with pkgs; [
-      kdePackages.yakuake
       devenv
     ];
   };
