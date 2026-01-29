@@ -1,47 +1,35 @@
 {
-  description = "SrGesus NixOS Configs";
+  description = "SrGesus NixOS System Configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
-    home = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/master";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager/trunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    import-tree.url = "github:vic/import-tree";
   };
 
-  nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
-    extra-substituters = [ "https://nixpkgs-python.cachix.org" "https://devenv.cachix.org" ];
-    extra-trusted-public-keys = [ "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=" "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
-  };
+  outputs =
+    inputs@{ import-tree, flake-parts, ... }:
+    flake-parts.lib.mkFlake
+      { inherit inputs; }
+      {
+        imports = [
+          (import-tree ./modules)
+        ];
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+      };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
-  let
-      inherit (inputs.nixpkgs) lib;
-      inherit (import ./lib { inherit lib; }) myLib;
-
-      systemModules = myLib.listModulesRecursive ./modules/system;
-      homeModules = myLib.listModulesRecursive ./modules/home;
-
-      mkHosts = dir: builtins.mapAttrs (host: filetype: lib.nixosSystem {
-        specialArgs = inputs;
-        modules = [
-          {
-            networking.hostName = host;
-            nixpkgs.config.allowUnfree = true;
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit myLib; };
-              sharedModules = homeModules;
-            };
-          }
-          (dir + "/${host}")
-          inputs.home.nixosModules.home-manager
-        ] ++ systemModules;
-      }) (builtins.readDir dir);
-  in {
-    nixosConfigurations = mkHosts ./hosts;
-  };
 }
