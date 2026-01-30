@@ -3,7 +3,7 @@
   config,
   inputs,
   ...
-}:
+}@top-level:
 let
   inherit (inputs.nixpkgs) lib;
   inherit (lib) types;
@@ -61,13 +61,17 @@ in
               sharedModules = [
                 inputs.plasma-manager.homeModules.plasma-manager
                 # MAKE SURE CONFIG.FLAKE DOESN'T GET SHADOWED
-                config.flake.homeModules.common
+                top-level.config.flake.homeModules.common
               ];
             };
+            environment.systemPackages = [
+              inputs.agenix.packages."${value.system}".default
+            ];
           }
         )
         inputs.home-manager.nixosModules.home-manager
-        config.flake.nixosModules.common
+        inputs.agenix.nixosModules.default
+        top-level.config.flake.nixosModules.common
       ]
       ++ value.modules;
     }
