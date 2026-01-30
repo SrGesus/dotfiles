@@ -160,7 +160,7 @@ in
 
           kscreenlocker = {
             lockOnResume = true;
-            timeout = 0;
+            timeout = 180;
           };
 
           # panels = [
