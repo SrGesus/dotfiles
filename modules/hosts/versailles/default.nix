@@ -5,6 +5,7 @@
     modules = with config.flake.nixosModules; [
       versailles
       laptop
+      lanzaboote
       ./_hardware.nix
     ];
   };

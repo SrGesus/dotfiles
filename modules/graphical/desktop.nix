@@ -131,7 +131,7 @@ in
 
         programs.plasma = {
           enable = true;
-          # overrideConfig = true;
+          overrideConfig = false;
 
           workspace = {
             lookAndFeel = "org.kde.breezedark.desktop";
@@ -163,78 +163,78 @@ in
             timeout = 0;
           };
 
-          panels = [
-            {
-              location = "bottom";
-              opacity = "translucent";
-              floating = false;
-              height = 48;
-              widgets = [
-                {
-                  kickoff = {
-                    sortAlphabetically = true;
-                    icon = "nix-snowflake";
-                  };
-                }
-                {
-                  pager = {
-                    general.showOnlyCurrentScreen = true;
-                  };
-                }
-                "org.kde.plasma.systemmonitor.cpucore"
-                "org.kde.plasma.systemmonitor.memory"
-                "org.kde.plasma.panelspacer"
-                {
-                  iconTasks = {
-                    launchers = [
-                      "preferred://filemanager"
-                      "preferred://browser"
-                      "applications:systemsettings.desktop"
-                      "applications:org.kde.konsole.desktop"
-                    ]
-                    ++ lib.optionals config.modules.obsidian.enable [ "applications:obsidian.desktop" ]
-                    ++ lib.optionals config.modules.discord.enable [
-                      "applications:${config.modules.discord.package.meta.mainProgram}.desktop"
-                    ];
-                  };
-                }
-                "org.kde.plasma.panelspacer"
-                {
-                  systemTray.items = {
-                    # We explicitly show bluetooth and battery
-                    shown = [
-                      "org.kde.plasma.battery"
-                      "org.kde.plasma.bluetooth"
-                    ];
-                    hidden = [
-                      # "org.kde.plasma.networkmanagement"
-                      # "org.kde.plasma.volume"
-                    ];
-                  };
-                }
-                {
-                  digitalClock = {
-                    calendar.firstDayOfWeek = "monday";
-                    time.format = "24h";
-                    font = {
-                      family = "Noto Sans";
-                      size = 9;
-                      style = "Regular";
-                      weight = 400;
-                    };
-                  };
-                }
-                {
-                  name = "org.kde.plasma.minimizeall";
-                  extraConfig = ''
-                      (widget) => {
-                        widget.globalShortcut = "Meta+D";
-                    }
-                  '';
-                }
-              ];
-            }
-          ];
+          # panels = [
+          #   {
+          #     location = "bottom";
+          #     opacity = "translucent";
+          #     floating = false;
+          #     height = 48;
+          #     widgets = [
+          #       {
+          #         kickoff = {
+          #           sortAlphabetically = true;
+          #           icon = "nix-snowflake";
+          #         };
+          #       }
+          #       {
+          #         pager = {
+          #           general.showOnlyCurrentScreen = true;
+          #         };
+          #       }
+          #       "org.kde.plasma.systemmonitor.cpucore"
+          #       "org.kde.plasma.systemmonitor.memory"
+          #       "org.kde.plasma.panelspacer"
+          #       {
+          #         iconTasks = {
+          #           launchers = [
+          #             "preferred://filemanager"
+          #             "preferred://browser"
+          #             "applications:systemsettings.desktop"
+          #             "applications:org.kde.konsole.desktop"
+          #           ]
+          #           ++ lib.optionals config.modules.obsidian.enable [ "applications:obsidian.desktop" ]
+          #           ++ lib.optionals config.modules.discord.enable [
+          #             "applications:${config.modules.discord.package.meta.mainProgram}.desktop"
+          #           ];
+          #         };
+          #       }
+          #       "org.kde.plasma.panelspacer"
+          #       {
+          #         systemTray.items = {
+          #           # We explicitly show bluetooth and battery
+          #           shown = [
+          #             "org.kde.plasma.battery"
+          #             "org.kde.plasma.bluetooth"
+          #           ];
+          #           hidden = [
+          #             # "org.kde.plasma.networkmanagement"
+          #             # "org.kde.plasma.volume"
+          #           ];
+          #         };
+          #       }
+          #       {
+          #         digitalClock = {
+          #           calendar.firstDayOfWeek = "monday";
+          #           time.format = "24h";
+          #           font = {
+          #             family = "Noto Sans";
+          #             size = 9;
+          #             style = "Regular";
+          #             weight = 400;
+          #           };
+          #         };
+          #       }
+          #       {
+          #         name = "org.kde.plasma.minimizeall";
+          #         extraConfig = ''
+          #             (widget) => {
+          #               widget.globalShortcut = "Meta+D";
+          #           }
+          #         '';
+          #       }
+          #     ];
+          #   }
+          # ];
 
           shortcuts = {
             # Disable Meta+N activating task manager entry N

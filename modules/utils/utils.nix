@@ -9,6 +9,7 @@
         rpi-imager
         _7zz
         unrar
+        sbctl
       ];
     };
 }

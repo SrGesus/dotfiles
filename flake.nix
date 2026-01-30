@@ -16,20 +16,24 @@
       inputs.home-manager.follows = "home-manager";
     };
     import-tree.url = "github:vic/import-tree";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{ import-tree, flake-parts, ... }:
-    flake-parts.lib.mkFlake
-      { inherit inputs; }
-      {
-        imports = [
-          (import-tree ./modules)
-        ];
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-      };
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        (import-tree ./modules)
+      ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+    };
 
 }
