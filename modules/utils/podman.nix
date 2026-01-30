@@ -5,7 +5,7 @@
   };
 
   flake.nixosModules.podman' =
-    { config, lib, ... }:
+    { config, lib, pkgs, ... }:
     {
       options.modules.podman.enable = lib.mkEnableOption "podman";
 
@@ -18,6 +18,9 @@
             defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
           };
         };
+        environment.systemPackages = with pkgs; [
+          podman-compose
+        ];
       };
     };
 
