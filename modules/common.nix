@@ -33,10 +33,14 @@ in
 
     flake.nixosModules.common.imports = config.commonNixosModules ++ [
       (
-        { ... }:
+        { pkgs, ... }:
         {
           imports = with config.flake.nixosModules; [
             locales
+          ];
+
+          environment.systemPackages = [
+            pkgs.sops
           ];
 
           nixpkgs.config.allowUnfree = true;
