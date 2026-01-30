@@ -6,6 +6,7 @@
       versailles
       laptop
       lanzaboote
+      podman
       ./_hardware.nix
     ];
   };

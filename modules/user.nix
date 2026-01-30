@@ -20,8 +20,8 @@ in
           ++ lib.optionals (value.modules.isNormalUser && config.networking.networkmanager.enable) [
             "networkmanager"
           ]
-          ++ lib.optionals (value.modules.superuser && config.modules.docker.enable) [
-            "docker"
+          ++ lib.optionals (value.modules.superuser && config.modules.podman.enable) [
+            "podman"
           ];
       }) config.home-manager.users;
     };
