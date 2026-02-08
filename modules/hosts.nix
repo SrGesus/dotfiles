@@ -60,7 +60,6 @@ in
               # extraSpecialArgs = { inherit myLib; };
               sharedModules = [
                 inputs.plasma-manager.homeModules.plasma-manager
-                # MAKE SURE CONFIG.FLAKE DOESN'T GET SHADOWED
                 top-level.config.flake.homeModules.common
               ];
             };

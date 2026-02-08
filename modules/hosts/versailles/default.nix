@@ -25,6 +25,8 @@
         "/dev/disk/by-uuid/99988361-54f3-4f11-83b2-b93e6ca59724";
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+      networking.hosts."100.90.108.104" = [ "srgesus.internal" "git.srgesus.internal" "auth.srgesus.internal" "mail.srgesus.internal" ];
+
       modules = {
         # timezone = "Europe/Lisbon";
       };
