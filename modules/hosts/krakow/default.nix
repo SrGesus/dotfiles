@@ -18,8 +18,58 @@ in
   };
 
   flake.nixosModules.krakow = {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.grub = {
+      # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+      # devices = [ ];
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+    };
+
+    networking.nftables.enable = true;
+    networking.firewall = {
+      enable = true;
+      # Open TCP ports
+      allowedTCPPorts = [
+        22
+        80
+        443
+        35422
+      ];
+      # Open UDP ports
+      allowedUDPPorts = [ 443 ];
+      # Open a range of ports
+      # allowedTCPPortRanges = [
+      #   {
+      #     from = 4000;
+      #     to = 4007;
+      #   }
+      # ];
+    };
+
+    networking.interfaces.enp1s0.ipv6.addresses = [
+      {
+        address = "2a01:4f9:c014:edfa::1";
+        prefixLength = 64;
+      }
+    ];
+
+    networking.defaultGateway6 = {
+      address = "fe80::1";
+      interface = "enp1s0";
+    };
+
+    modules = {
+      timezone = "Europe/Lisbon";
+    };
+
+    users.users.user = {
+      subUidRanges = [
+        { startUid = 100000; count = 262144; }
+      ];
+      subGidRanges = [
+        { startGid = 100000; count = 262144; }
+      ];
+    };
 
     home-manager.users.user = {
 

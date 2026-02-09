@@ -7,6 +7,8 @@
       laptop
       lanzaboote
       podman
+      sshd
+      vim
       ./_hardware.nix
     ];
   };
