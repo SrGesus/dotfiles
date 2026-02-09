@@ -34,6 +34,7 @@ in
         80
         443
         35422
+        35522
       ];
       # Open UDP ports
       allowedUDPPorts = [ 443 ];
