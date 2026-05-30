@@ -52,6 +52,7 @@
               overlays = [
                 inputs.self.overlays.default
               ];
+              config.allowUnfree = true;
             };
             pkgsDirectory = ./packages;
           };

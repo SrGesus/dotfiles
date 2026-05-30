@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
     homepage = "https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html";
     description = "A tool for the dynamic instrumentation of programs";
     platforms = [ "x86_64-linux" ];
-    # license = licenses.unfree;
+    license = licenses.unfree;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = [ "carlos.vaz" ];
   };

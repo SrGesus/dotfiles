@@ -122,7 +122,7 @@ stdenv.mkDerivation rec {
     homepage = "https://software.intel.com/content/www/us/en/develop/tools/oneapi.html";
     description = "Intel® VTune(TM) Profiler";
     platforms = [ "x86_64-linux" ];
-    # license = licenses.unfree;
+    license = licenses.unfree;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = [ "carlos.vaz" ];
   };
