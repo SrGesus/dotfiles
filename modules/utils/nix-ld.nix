@@ -50,6 +50,12 @@
           # Required
           glib
           gtk2
+          # libsForQt5.qt5.qtbase
+          qt5.qtbase
+          qt5.qttools
+          qt5.qtdeclarative
+          qt5.qtwebchannel
+          qt5.qtpositioning
 
           # Inspired by steam
           # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/st/steam/package.nix#L36-L85

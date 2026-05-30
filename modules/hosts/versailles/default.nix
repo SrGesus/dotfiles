@@ -1,4 +1,4 @@
-{ config, ... }@top-level:
+{ config, nixpkgs, ... }@top-level:
 {
   hosts.versailles = {
     system = "x86_64-linux";
@@ -9,6 +9,9 @@
       podman
       sshd
       vim
+      nix-ld
+      obs
+      libreoffice
       ./_hardware.nix
     ];
   };
@@ -33,6 +36,12 @@
         # timezone = "Europe/Lisbon";
       };
 
+
+      environment.systemPackages = [
+        top-level.config.flake.packages.x86_64-linux.intel-oneapi-vtune
+        top-level.config.flake.packages.x86_64-linux.pin
+      ];
+
       home-manager.users.user = {
 
         imports = with top-level.config.flake.homeModules; [
@@ -43,6 +52,7 @@
           obsidian
           desktop
           libvirtd
+          # virtualbox
           vscode
           kdeconnect
           keepass

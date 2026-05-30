@@ -28,18 +28,45 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
   };
 
   outputs =
-    inputs@{ import-tree, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        (import-tree ./modules)
-      ];
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-    };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { withSystem, ... }:
+      {
+        imports = [
+          (inputs.import-tree ./modules)
+          inputs.pkgs-by-name-for-flake-parts.flakeModule
+        ];
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+        perSystem =
+          { system, config, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = [
+                inputs.self.overlays.default
+              ];
+            };
+            pkgsDirectory = ./packages;
+          };
+
+        flake = {
+          overlays.default =
+            final: prev:
+            withSystem prev.stdenv.hostPlatform.system (
+              { config, ... }:
+              {
+                local = config.packages;
+              }
+            );
+        };
+      }
+    );
 
 }

@@ -15,6 +15,7 @@
             prismlauncher
             wineWow64Packages.full
             winetricks
+            javaPackages.compiler.openjdk25
           ];
 
           programs.lutris = {

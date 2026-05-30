@@ -70,7 +70,9 @@ in
       subGidRanges = [
         { startGid = 100000; count = 262144; }
       ];
+      linger = true;
     };
+
 
     home-manager.users.user = {
 

@@ -11,7 +11,7 @@ in
   };
 
   flake.nixosModules.user =
-    { config, ... }:
+    { config, nixpkgs, ... }:
     {
       users.users = builtins.mapAttrs (name: value: {
         isNormalUser = value.modules.isNormalUser;
