@@ -47,6 +47,7 @@
         imports = with top-level.config.flake.homeModules; [
           art
           discord
+          signal
           games
           beancount
           obsidian

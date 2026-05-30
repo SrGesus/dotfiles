@@ -8,7 +8,7 @@
         profiles.default.extensions = with pkgs.vscode-extensions; [ jnoortheen.nix-ide ];
       };
 
-      home.packages = [ pkgs.nixfmt ];
+      home.packages = [ pkgs.nixfmt pkgs.nixd ];
     };
 
 }

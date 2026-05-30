@@ -7,6 +7,10 @@ in
     modules.discord.enable = true;
   };
 
+  flake.homeModules.signal = {
+    modules.signal.enable = true;
+  };
+
   commonHomeModules = [
     (
       { config, pkgs, ... }:
@@ -18,10 +22,11 @@ in
           type = types.package;
           description = "Package for discord.";
         };
+        options.modules.signal.enable = lib.mkEnableOption "signal";
 
-        config.home.packages = lib.mkIf config.modules.discord.enable [
-          pkgs.legcord
-          config.modules.discord.package
+        config.home = lib.mkMerge [
+          (lib.mkIf config.modules.discord.enable { packages = [ config.modules.discord.package ]; })
+          (lib.mkIf config.modules.signal.enable { packages = [ pkgs.signal-desktop ]; })
         ];
       }
     )
