@@ -35,13 +35,16 @@ in
           '')
         ];
 
-        # Remove sleep
-        systemd.sleep.extraConfig = ''
-          AllowSuspend=no
-          AllowHybridSleep=no
-          AllowHibernation=yes
-          AllowSuspendThenHibernate=yes
+        services.udev.extraRules = ''
+          ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
         '';
+
+        systemd.sleep.settings.Sleep = {
+          AllowSuspend = "no";
+          AllowHybridSleep = "no";
+          AllowHibernation = "yes";
+          AllowSuspendThenHibernate = "yes";
+        };
 
         # KDE
         services.desktopManager.plasma6.enable = true;

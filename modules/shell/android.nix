@@ -12,7 +12,7 @@
     };
 
   flake.nixosModules.android =
-    { config, lib, ... }:
+    { config, lib, pkgs, ... }:
     let
       inherit (lib)
         mkIf
@@ -22,7 +22,7 @@
         ;
     in
     {
-      programs.adb.enable = any (value: value.modules.adb.enable) (attrValues config.home-manager.users);
+      environment.systemPackages = mkIf (any (value: value.modules.adb.enable) (attrValues config.home-manager.users)) [ pkgs.android-tools ];
 
       users.users = mapAttrs (
         _: value: mkIf value.modules.adb.enable { extraGroups = [ "adbusers" ]; }

@@ -10,6 +10,7 @@
         _7zz
         unrar
         sbctl
+        vlc
       ];
     };
 }
