@@ -15,7 +15,7 @@ in
 
       services.resolved = {
         enable = true;
-        dnssec = "true"; # Or "allow-downgrade"
+        settings.Resolve.DNSSEC = "true"; # Or "allow-downgrade"
       };
 
       networking = {
