@@ -61,6 +61,7 @@
           vscode
           kdeconnect
           keepass
+          helix
         ];
 
         modules = {
@@ -81,6 +82,13 @@
 
       # Configure console keymap
       console.keyMap = "pt-latin1";
+
+      nix.settings = {
+        extra-platforms = [
+          "aarch64-linux"
+        ];
+        sandbox = false;
+      };
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions

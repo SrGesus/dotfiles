@@ -12,43 +12,43 @@
     nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
   ];
 
-  networking.hostName = "graz";
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
-  services.openssh.enable = true;
+  # networking.hostName = "graz";
+  # networking.networkmanager.enable = true;
+  # networking.firewall.enable = false;
+  # services.openssh.enable = true;
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 
-  services.displayManager = {
-    autoLogin.user = "pi";
-    sddm.enable = true;
-    sddm.wayland.enable = true;
-  };
+  # services.displayManager = {
+  #   autoLogin.user = "pi";
+  #   sddm.enable = true;
+  #   sddm.wayland.enable = true;
+  # };
 
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   #services.desktopManager.plasma6-bigscreen.enable = true;
 
   # Locale
-  i18n.defaultLocale = "en_IE.UTF-8";
+  # i18n.defaultLocale = "en_IE.UTF-8";
 
   services.xserver.enable = true;
 
   # user
-  users.users.pi = {
-    initialPassword = "banana";
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-  };
+  # users.users.pi = {
+  #   initialPassword = "banana";
+  #   isNormalUser = true;
+  #   shell = pkgs.zsh;
+  #   extraGroups = [
+  #     "wheel"
+  #     "networkmanager"
+  #   ];
+  # };
 
   modules = {
     home-manager.pi = {
       enable = true;
-      git.enable = true;
-      zsh.enable = true;
+      # git.enable = true;
+      # zsh.enable = true;
       nerdFonts.enable = true;
     };
   };

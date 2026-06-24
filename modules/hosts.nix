@@ -48,7 +48,10 @@ in
   config.flake.nixosConfigurations = builtins.mapAttrs (
     name: value:
     # TODO: if rpi then use the nixos-raspberrypi system function instead
-    lib.nixosSystem {
+    (if value.rpi then 
+    inputs.nixos-raspberrypi.lib.nixosSystem
+    else 
+    lib.nixosSystem) {
       modules = [
         (
           { ... }:
@@ -63,13 +66,13 @@ in
                 top-level.config.flake.homeModules.common
               ];
             };
-            environment.systemPackages = [
-              inputs.agenix.packages."${value.system}".default
-            ];
+            # environment.systemPackages = [
+            #   inputs.agenix.packages."${value.system}".default
+            # ];
           }
         )
         inputs.home-manager.nixosModules.home-manager
-        inputs.agenix.nixosModules.default
+        # inputs.agenix.nixosModules.default
         top-level.config.flake.nixosModules.common
       ]
       ++ value.modules;

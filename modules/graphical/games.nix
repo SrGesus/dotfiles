@@ -6,10 +6,10 @@
 
   commonHomeModules = [
     (
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       {
         options.modules.games.enable = lib.mkEnableOption "games";
-        config = {
+        config = lib.mkIf config.modules.games.enable {
 
           home.packages = with pkgs; [
             prismlauncher
