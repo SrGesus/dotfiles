@@ -2,12 +2,10 @@
   description = "My NixOS Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    # nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
-    nixos-raspberrypi = {
-      # inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nvmd/nixos-raspberrypi/main";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-25.05";
     };
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
     home = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.05";

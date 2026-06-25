@@ -11,14 +11,15 @@
     nixos-raspberrypi.nixosModules.raspberry-pi-5.base
     nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
   ];
-
+nixpkgs.config.allowUnfree = true;
   networking.hostName = "graz";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
   services.openssh.enable = true;
 
   services.tailscale.enable = true;
-
+  programs.kdeconnect.enable = true;
+  
   services.displayManager = {
     autoLogin.user = "pi";
     sddm.enable = true;
@@ -67,6 +68,7 @@
     ripgrep
     man
     firefox
+    chromium
   ];
 
   security.sudo.wheelNeedsPassword = false;
