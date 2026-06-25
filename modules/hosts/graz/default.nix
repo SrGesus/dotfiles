@@ -33,8 +33,15 @@
       };
 
       services.desktopManager.plasma6.enable = true;
+      xdg.portal.configPackages = [ pkgs.kdePackages.plasma.plasma-bigscreen ];
+      services.displayManager.sessionPackages = [
+        pkgs.kdePackages.plasma.plasma-bigscreen
+      ];
+      environment.systemPackages = [
+        pkgs.kdePackages.plasma.plasma-bigscreen
+      ];
 
-      home-manager.users.user = {
+      home-manager.users.pi = {
 
         imports = with top-level.config.flake.homeModules; [
           kdeconnect
