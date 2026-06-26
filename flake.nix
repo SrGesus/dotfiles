@@ -2,7 +2,7 @@
   description = "SrGesus NixOS System Configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/65ccb6f831a38059ff8df891a983959d9f3df2b5";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";

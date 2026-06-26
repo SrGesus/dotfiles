@@ -30,6 +30,7 @@
         autoLogin.user = "pi";
         sddm.enable = true;
         sddm.wayland.enable = true;
+        defaultSession = "plasma-bigscreen-wayland";
       };
 
       services.desktopManager.plasma6.enable = true;
