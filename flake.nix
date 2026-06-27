@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/nixos-unstable";
-    nixos-raspberrypi.url = "github:randomizedcoder/nixos-raspberrypi/cross-compile-incremental";
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/nixos-unstable";
+    # nixos-raspberrypi.url = "github:randomizedcoder/nixos-raspberrypi/cross-compile-incremental";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
