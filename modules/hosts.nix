@@ -52,6 +52,7 @@ in
     inputs.nixos-raspberrypi.lib.nixosSystem
     else 
     lib.nixosSystem) {
+      specialArgs = { inherit inputs; nixos-raspberrypi = inputs.nixos-raspberrypi; };
       modules = [
         (
           { ... }:

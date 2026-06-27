@@ -17,6 +17,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   # I think this sounds right, well it works
   # boot.loader.grub.enable = false;
@@ -51,7 +52,7 @@
   # networking.interfaces.end0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.buildPlatform = "aarch64-linux";
+  # nixpkgs.buildPlatform = "x86_64-linux";
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   #powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
