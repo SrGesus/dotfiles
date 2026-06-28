@@ -80,7 +80,12 @@ in
   };
 
   flake.homeModules.kdeconnect = {
-    modules.desktop.kdeconnect = true;
+    modules.kdeconnect = true;
+  };
+
+  flake.homeModules.kdeconnect' = { config, lib, ... }: {
+    options.modules.kdeconnect = lib.mkEnableOption "kdeconnect";
+    config.services.kdeconnect.enable = config.modules.kdeconnect;
   };
 
   flake.homeModules.desktop' =
@@ -92,11 +97,8 @@ in
     }:
     {
       options.modules.desktop.enable = lib.mkEnableOption "desktop environment";
-      options.modules.desktop.kdeconnect = lib.mkEnableOption "kdeconnect";
 
       config = lib.mkIf config.modules.desktop.enable {
-        services.kdeconnect.enable = config.modules.desktop.kdeconnect;
-
         # Yakuake
         home.packages =
           lib.optionals yakuake [
