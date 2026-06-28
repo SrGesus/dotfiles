@@ -34,12 +34,12 @@
       };
 
       services.desktopManager.plasma6.enable = true;
-      xdg.portal.configPackages = [ pkgs.kdePackages.plasma.plasma-bigscreen ];
+      xdg.portal.configPackages = [ pkgs.unstable.kdePackages.plasma.plasma-bigscreen ];
       services.displayManager.sessionPackages = [
-        pkgs.kdePackages.plasma.plasma-bigscreen
+        pkgs.unstable.kdePackages.plasma.plasma-bigscreen
       ];
       environment.systemPackages = [
-        pkgs.kdePackages.plasma.plasma-bigscreen
+        pkgs.unstable.kdePackages.plasma.plasma-bigscreen
       ];
 
       home-manager.users.pi = {

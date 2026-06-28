@@ -21,7 +21,7 @@
 
   # I think this sounds right, well it works
   # boot.loader.grub.enable = false;
-  boot.loader.raspberry-pi.bootloader = "kernel";
+  boot.loader.raspberry-pi.bootloader = "kernelboot";
 
   # Raspberrypi sd card
   fileSystems = {

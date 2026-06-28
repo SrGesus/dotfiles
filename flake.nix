@@ -2,9 +2,12 @@
   description = "SrGesus NixOS System Configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/nixos-unstable";
+    nixos-raspberrypi = {
+      url = "github:nvmd/nixos-raspberrypi/nixos-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixos-raspberrypi.url = "github:randomizedcoder/nixos-raspberrypi/cross-compile-incremental";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
@@ -49,13 +52,14 @@
         perSystem =
           { system, config, ... }:
           {
-            _module.args.pkgs = import inputs.nixpkgs {
-              inherit system;
-              overlays = [
-                inputs.self.overlays.default
-              ];
-              config.allowUnfree = true;
-            };
+            # _module.args.pkgs = import inputs.nixpkgs {
+            #   inherit system;
+            #   overlays = [
+            #     inputs.self.overlays.default
+            #     inputs.self.overlays.add-unstable-packages
+            #   ];
+            #   config.allowUnfree = true;
+            # };
             pkgsDirectory = ./packages;
           };
 
@@ -68,6 +72,11 @@
                 local = config.packages;
               }
             );
+          overlays.unstable = final: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              system = prev.stdenv.hostPlatform.system;
+            };
+          };
         };
       }
     );

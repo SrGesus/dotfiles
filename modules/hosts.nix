@@ -48,12 +48,18 @@ in
   config.flake.nixosConfigurations = builtins.mapAttrs (
     name: value:
     # TODO: if rpi then use the nixos-raspberrypi system function instead
-    (if value.rpi then 
-    inputs.nixos-raspberrypi.lib.nixosSystem
-    else 
-    lib.nixosSystem) {
-      specialArgs = { inherit inputs; nixos-raspberrypi = inputs.nixos-raspberrypi; };
+    (if value.rpi then inputs.nixos-raspberrypi.lib.nixosSystem else lib.nixosSystem) {
       modules = [
+        {
+          nixpkgs = {
+            system = value.system;
+            overlays = [
+              inputs.self.overlays.default
+              inputs.self.overlays.unstable
+            ];
+            config.allowUnfree = true;
+          };
+        }
         (
           { ... }:
           {
