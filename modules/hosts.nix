@@ -56,6 +56,7 @@ in
             overlays = [
               inputs.self.overlays.default
               inputs.self.overlays.unstable
+              inputs.self.overlays.unstable-kdePackages
             ];
             config.allowUnfree = true;
           };

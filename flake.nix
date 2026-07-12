@@ -8,7 +8,7 @@
       url = "github:nvmd/nixos-raspberrypi/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixos-raspberrypi.url = "github:randomizedcoder/nixos-raspberrypi/cross-compile-incremental";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -52,14 +52,10 @@
         perSystem =
           { system, config, ... }:
           {
-            # _module.args.pkgs = import inputs.nixpkgs {
-            #   inherit system;
-            #   overlays = [
-            #     inputs.self.overlays.default
-            #     inputs.self.overlays.add-unstable-packages
-            #   ];
-            #   config.allowUnfree = true;
-            # };
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
             pkgsDirectory = ./packages;
           };
 
@@ -73,6 +69,11 @@
               }
             );
           overlays.unstable = final: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              system = prev.stdenv.hostPlatform.system;
+            };
+          };
+          overlays.unstable-kdePackages = final: prev: {
             unstable = import inputs.nixpkgs-unstable {
               system = prev.stdenv.hostPlatform.system;
             };

@@ -335,6 +335,7 @@ in
   # Add both modules to common module
   commonHomeModules = [
     config.flake.homeModules.desktop'
+    config.flake.homeModules.kdeconnect'
   ];
   commonNixosModules = [
     config.flake.nixosModules.desktop

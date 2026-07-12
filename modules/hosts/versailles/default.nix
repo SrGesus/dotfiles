@@ -12,6 +12,7 @@
       nix-ld
       obs
       libreoffice
+      cachyos-kernel
       ./_hardware.nix
     ];
   };
@@ -22,9 +23,6 @@
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-
-      # Use latest kernel.
-      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       boot.initrd.luks.devices."luks-99988361-54f3-4f11-83b2-b93e6ca59724".device =
         "/dev/disk/by-uuid/99988361-54f3-4f11-83b2-b93e6ca59724";
