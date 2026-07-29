@@ -17,7 +17,7 @@ in
       {
         options.modules.discord.enable = lib.mkEnableOption "discord";
         options.modules.discord.package = lib.mkOption {
-          default = pkgs.legcord;
+          default = pkgs.discord;
           defaultText = "pkgs.legcord";
           type = types.package;
           description = "Package for discord.";

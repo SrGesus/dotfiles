@@ -18,7 +18,7 @@
   };
 
   flake.nixosModules.versailles =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

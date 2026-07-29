@@ -4,6 +4,7 @@
     services.openssh = {
       enable = true;
       ports = [ 35422 ];
+      openFirewall = true;
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
@@ -12,10 +13,10 @@
       };
     };
 
-    services.endlessh = {
-      enable = true;
-      port = 22;
-      openFirewall = true;
-    };
+    # services.endlessh = {
+    #   enable = true;
+    #   port = 22;
+    #   openFirewall = true;
+    # };
   };
 }

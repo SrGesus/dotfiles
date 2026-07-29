@@ -39,10 +39,6 @@ in
             locales
           ];
 
-          environment.systemPackages = [
-            pkgs.sops
-          ];
-
           nixpkgs.config.allowUnfree = true;
 
           nix = {
@@ -60,18 +56,5 @@ in
         }
       )
     ];
-
-    # perSystem =
-    #   {
-    #     pkgs ? import <nixpkgs> { },
-    #     ...
-    #   }:
-    #   {
-    #     packages.debug = pkgs.writeText "my-text-file" ''
-    #       Hello from Nix!
-    #       This is just a text file.
-    #       ${config.flake.nixosModules.common.imports}
-    #     '';
-    #   };
   };
 }

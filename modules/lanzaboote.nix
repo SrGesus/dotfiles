@@ -1,6 +1,6 @@
 { inputs, lib, ... }:
 {
-  flake.nixosModules.lanzaboote = {
+  flake.nixosModules.lanzaboote = {pkgs, ...}: {
     imports = [
       inputs.lanzaboote.nixosModules.lanzaboote
     ];
@@ -15,5 +15,9 @@
       enable = true;
       pkiBundle = "/var/lib/sbctl";
     };
+
+    environment.systemPackages = with pkgs; [
+      sbctl
+    ];
   };
 }

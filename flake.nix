@@ -24,10 +24,7 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # agenix = {
-    #   url = "github:ryantm/agenix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    sops-nix.url = "github:Mic92/sops-nix";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

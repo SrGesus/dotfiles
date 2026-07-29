@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.utils =
+  flake.nixosModules.graphical-utils =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
@@ -7,10 +7,20 @@
         wl-clipboard-rs
         qbittorrent
         rpi-imager
+        vlc
+      ];
+    };
+
+  flake.nixosModules.shell-utils =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
         _7zz
         unrar
-        sbctl
-        vlc
+        ncdu
+        nvd
+        nix-tree
+        age
       ];
     };
 }

@@ -10,7 +10,8 @@ in
         firefox
         printing
         tailscale
-        utils
+        graphical-utils
+        shell-utils
       ];
 
       services.resolved = {

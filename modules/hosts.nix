@@ -74,14 +74,17 @@ in
                 top-level.config.flake.homeModules.common
               ];
             };
-            # environment.systemPackages = [
-            #   inputs.agenix.packages."${value.system}".default
-            # ];
           }
         )
-        inputs.home-manager.nixosModules.home-manager
-        # inputs.agenix.nixosModules.default
         top-level.config.flake.nixosModules.common
+
+        inputs.home-manager.nixosModules.home-manager
+        
+        inputs.sops-nix.nixosModules.sops
+        {
+          sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+          sops.age.generateKey = true;
+        }
       ]
       ++ value.modules;
     }

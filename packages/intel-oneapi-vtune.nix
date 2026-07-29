@@ -25,7 +25,10 @@
   systemd,
   stdenv,
   wrapGAppsHook3,
-  xorg,
+  libxcomposite,
+  libxdamage,
+  libxext,
+  libxrandr,
   zlib,
   ...
 }:
@@ -67,10 +70,10 @@ stdenv.mkDerivation rec {
     pango
     systemd
     udev
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXrandr
+    libxcomposite
+    libxdamage
+    libxext
+    libxrandr
     zlib
   ];
 

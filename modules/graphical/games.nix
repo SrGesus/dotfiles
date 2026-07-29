@@ -10,7 +10,6 @@
       {
         options.modules.games.enable = lib.mkEnableOption "games";
         config = lib.mkIf config.modules.games.enable {
-
           home.packages = with pkgs; [
             prismlauncher
             wineWow64Packages.full
@@ -54,10 +53,6 @@
               pkgs.proton-ge-bin
             ];
           };
-
-          fonts.packages = [
-            pkgs.freetype
-          ];
         };
       }
     )

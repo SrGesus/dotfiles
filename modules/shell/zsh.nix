@@ -123,7 +123,6 @@
 
         home.packages = with pkgs; [
           ripgrep
-          devenv
         ];
       };
     };

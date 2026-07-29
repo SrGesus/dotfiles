@@ -8,10 +8,11 @@ in
     modules = with config.flake.nixosModules; [
       krakow
       sshd
-      podman
-      utils
+      # podman
       inputs.disko.nixosModules.disko
       vim
+      vps
+      shell-utils
       ./_hardware.nix
       ./_disk.nix
     ];
@@ -28,23 +29,6 @@ in
     networking.nftables.enable = true;
     networking.firewall = {
       enable = true;
-      # Open TCP ports
-      allowedTCPPorts = [
-        22
-        80
-        443
-        35422
-        35522
-      ];
-      # Open UDP ports
-      allowedUDPPorts = [ 443 ];
-      # Open a range of ports
-      # allowedTCPPortRanges = [
-      #   {
-      #     from = 4000;
-      #     to = 4007;
-      #   }
-      # ];
     };
 
     networking.interfaces.enp1s0.ipv6.addresses = [
@@ -61,6 +45,7 @@ in
 
     modules = {
       timezone = "Europe/Lisbon";
+      vps.domain = "srgesus.eu";
     };
 
     users.users.user = {
@@ -75,7 +60,6 @@ in
 
 
     home-manager.users.user = {
-
       imports = with config.flake.homeModules; [
 
       ];
